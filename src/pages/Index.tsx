@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Zap, BarChart2, ShieldCheck } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
-import { ProfileSwitcher, profiles, Profile } from "@/components/ProfileSwitcher";
+import { ProfileSwitcher } from "@/components/ProfileSwitcher";
+import { profiles, Profile } from "@/data/profiles";
 import { OfferCard, OfferData } from "@/components/OfferCard";
 import { AmountInput } from "@/components/AmountInput";
 import { PlanTimeline } from "@/components/PlanTimeline";
@@ -48,7 +49,7 @@ const Index = () => {
 
       <main className="container mx-auto px-4 py-8">
         {/* Hero Section */}
-        <div className="text-center mb-12">
+        <div className="hero-bg text-center p-8 sm:p-10 mb-12">
           <div className="flex justify-center mb-6">
             <ProfileSwitcher 
               selectedProfile={selectedProfile}
@@ -56,7 +57,7 @@ const Index = () => {
             />
           </div>
           
-          <h1 className="text-4xl sm:text-5xl font-rubik font-bold text-text-primary mb-4">
+          <h1 className="text-4xl sm:text-5xl font-slab font-bold text-text-primary mb-4">
             Money in minutes.{" "}
             <span className="text-gradient">A plan in seconds.</span>
           </h1>

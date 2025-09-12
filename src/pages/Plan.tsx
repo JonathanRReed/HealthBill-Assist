@@ -63,7 +63,7 @@ export default function Plan() {
                           <DollarSign className="w-4 h-4 text-brand-gold" />
                           <span className="font-medium text-text-primary">Instant Relief</span>
                         </div>
-                        <Button variant="ghost" size="icon" onClick={() => { removeItem(item.id); toast("Removed"); }}>
+                        <Button variant="ghost" size="icon" aria-label="Remove plan item" onClick={() => { removeItem(item.id); toast("Removed"); }}>
                           <Trash2 className="w-4 h-4" />
                         </Button>
                       </div>

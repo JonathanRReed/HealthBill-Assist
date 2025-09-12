@@ -1,0 +1,8 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow build/preview paths (none for SPA by default)
+
+# Sitemaps (add your real URL if deployed)
+Sitemap: https://example.com/sitemap.xml

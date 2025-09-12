@@ -16,6 +16,11 @@ export function FairFlowLogo({ className, size = "md" }: FairFlowLogoProps) {
     md: "h-10 w-10 p-1.5",
     lg: "h-12 w-12 p-2",
   } as const;
+  const pixelSize: Record<typeof size, number> = {
+    sm: 24,
+    md: 32,
+    lg: 40,
+  } as const;
 
   return (
     <div className={cn("flex items-center gap-2", className)}>
@@ -25,6 +30,10 @@ export function FairFlowLogo({ className, size = "md" }: FairFlowLogoProps) {
             src="/favicon.png"
             alt="FairFlow logo"
             className={cn("rounded-md object-contain", sizeClasses[size])}
+            width={pixelSize[size]}
+            height={pixelSize[size]}
+            decoding="async"
+            fetchPriority="high"
           />
         </div>
       </div>

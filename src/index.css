@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+/* Fonts are loaded via index.html with preconnect + display=swap for performance */
 
 @tailwind base;
 @tailwind components;
@@ -80,6 +80,25 @@
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
+
+  /* Hero background composite: diagonal red->gold blend with subtle noise */
+  .hero-bg {
+    position: relative;
+    background: linear-gradient(135deg, hsl(var(--brand-red) / 0.16), hsl(var(--brand-gold) / 0.12));
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: var(--shadow-md);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 3px 3px;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
 }
 
 @layer base {
@@ -90,7 +109,11 @@
   body {
     @apply bg-background text-foreground font-inter antialiased;
     font-feature-settings: "cv03", "cv04", "cv11";
-    background: hsl(var(--background));
+    /* Sitewide background: deep base + diagonal brand wash + subtle gold glow */
+    background:
+      linear-gradient(135deg, hsl(var(--brand-red) / 0.08), hsl(var(--brand-gold) / 0.06)),
+      radial-gradient(1000px 600px at 85% -10%, hsl(var(--brand-gold) / 0.10), transparent 65%),
+      hsl(var(--background));
     color: hsl(var(--text-primary));
   }
   
@@ -113,6 +136,9 @@
   
   .font-inter {
     font-family: 'Inter', sans-serif;
+  }
+  .font-slab {
+    font-family: 'Zilla Slab', serif;
   }
 }
 
@@ -182,7 +208,18 @@
   
   /* Loading skeletons */
   .skeleton {
-    @apply bg-elevated animate-pulse rounded;
+    @apply rounded;
+    background: linear-gradient(90deg, hsl(var(--elevated)) 0%, hsl(var(--surface)) 50%, hsl(var(--elevated)) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.6s infinite;
+  }
+
+  /* Button glow utility */
+  .btn-glow {
+    transition: box-shadow 0.2s var(--transition-smooth);
+  }
+  .btn-glow:hover {
+    box-shadow: 0 0 0 3px hsl(var(--brand-gold) / 0.15), 0 6px 24px hsl(var(--brand-gold) / 0.18);
   }
   
   /* Custom scrollbar */

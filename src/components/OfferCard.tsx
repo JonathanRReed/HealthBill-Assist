@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Clock, CheckCircle, TrendingUp, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Profile } from "./ProfileSwitcher";
+import { Profile } from "@/data/profiles";
 
 interface OfferCardProps {
   profile: Profile;
@@ -114,7 +114,7 @@ export function OfferCard({ profile, onOfferReady }: OfferCardProps) {
           <p className="text-text-secondary mb-6">
             Check your eligibility for fair, transparent cash flow support
           </p>
-          <Button onClick={checkEligibility} size="lg" className="w-full">
+          <Button onClick={checkEligibility} size="lg" className="w-full btn-glow">
             Check eligibility
           </Button>
         </div>
@@ -205,6 +205,35 @@ export function OfferCard({ profile, onOfferReady }: OfferCardProps) {
               <span>{reason}</span>
             </div>
           ))}
+        </div>
+
+        {/* Confidence meter */}
+        <div className="pt-1">
+          {(() => {
+            const avgDeposit = profile.deposits.reduce((a, b) => a + b, 0) / profile.deposits.length;
+            const variance = profile.deposits.reduce((acc, dep) => acc + Math.pow(dep - avgDeposit, 2), 0) / profile.deposits.length;
+            const stdDev = Math.sqrt(variance);
+            const volatility = stdDev / avgDeposit;
+            // Basic heuristic: higher volatility and nsf reduce confidence
+            const base = 90;
+            const penalty = Math.min(25, Math.round(volatility * 40) + profile.nsfCount * 5);
+            const confidence = Math.max(60, base - penalty);
+            return (
+              <div>
+                <div className="flex justify-between text-xs text-text-secondary mb-1">
+                  <span>Confidence</span>
+                  <span className="text-text-primary font-medium">{confidence}%</span>
+                </div>
+                <div className="h-2 bg-elevated rounded">
+                  <div
+                    className="h-2 rounded bg-gradient-brand transition-all duration-500"
+                    style={{ width: `${confidence}%` }}
+                  />
+                </div>
+                <div className="text-xs text-text-muted mt-1">Steady income pattern</div>
+              </div>
+            );
+          })()}
         </div>
       </div>
     </Card>
