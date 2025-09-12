@@ -26,8 +26,7 @@ export default tseslint.config(
         destructuredArrayIgnorePattern: "^_"
       }],
       "@typescript-eslint/no-explicit-any": "warn",
-      "@typescript-eslint/prefer-const": "warn",
-      "prefer-const": "off", // Use TypeScript version instead
+      "prefer-const": "warn",
     },
   },
 );
