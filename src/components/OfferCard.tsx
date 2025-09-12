@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Clock, CheckCircle, TrendingUp, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -19,6 +20,7 @@ export interface OfferData {
 }
 
 export function OfferCard({ profile, onOfferReady }: OfferCardProps) {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [offer, setOffer] = useState<OfferData | null>(null);
   const [loadingTime, setLoadingTime] = useState(0);
@@ -140,7 +142,11 @@ export function OfferCard({ profile, onOfferReady }: OfferCardProps) {
           <p className="text-text-secondary mb-4">
             {offer.reasons[0]}
           </p>
-          <Button variant="secondary" className="w-full">
+          <Button
+            variant="secondary"
+            className="w-full"
+            onClick={() => navigate("/bill-bridge")}
+          >
             Try BillBridge instead
           </Button>
         </div>

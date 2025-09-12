@@ -3,6 +3,7 @@ import { Download, CheckCircle, DollarSign, Calendar, Shield } from "lucide-reac
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { toast } from "@/components/ui/sonner";
 
 interface CoachSummaryProps {
   amount: number;
@@ -13,6 +14,7 @@ interface CoachSummaryProps {
 
 export function CoachSummary({ amount, fee, hardshipMode, scheduleDate }: CoachSummaryProps) {
   const [showExport, setShowExport] = useState(false);
+  const [accepted, setAccepted] = useState(false);
   const total = amount + fee;
 
   const summaryPoints = [
@@ -55,8 +57,17 @@ export function CoachSummary({ amount, fee, hardshipMode, scheduleDate }: CoachS
           </div>
 
           <div className="flex gap-2">
-            <Button size="sm" className="flex-1">
-              Accept Plan
+            <Button
+              size="sm"
+              className="flex-1"
+              onClick={() => {
+                setAccepted(true);
+                toast.success("Plan accepted", {
+                  description: `Total $${total} with $${fee} fee • starts ${scheduleDate}`,
+                });
+              }}
+            >
+              {accepted ? "Accepted" : "Accept Plan"}
             </Button>
             
             <Dialog open={showExport} onOpenChange={setShowExport}>

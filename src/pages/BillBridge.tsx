@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calendar, DollarSign, Plus, ArrowRight, Lightbulb, Check } from "lucide-react";
+import { toast } from "@/components/ui/sonner";
 
 interface Bill {
   id: string;
@@ -222,7 +223,15 @@ const BillBridge = () => {
                       </div>
                     </div>
 
-                    <Button className="w-full" size="lg">
+                    <Button
+                      className="w-full"
+                      size="lg"
+                      onClick={() =>
+                        toast.success("Added to plan", {
+                          description: `${selectedBill.name} • $${selectedBill.amount} scheduled`,
+                        })
+                      }
+                    >
                       Add to Payment Plan
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
