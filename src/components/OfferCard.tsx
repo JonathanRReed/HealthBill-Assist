@@ -4,6 +4,8 @@ import { Clock, CheckCircle, TrendingUp, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Profile } from "@/data/profiles";
+import { calculateMockOffer, MOCK_CONFIG, formatPaymentDate, generatePaymentDates } from "@/lib/mockConfig";
+import { useScreenReaderAnnouncement } from "@/components/ScreenReaderAnnouncement";
 
 interface OfferCardProps {
   profile: Profile;
@@ -17,6 +19,7 @@ export interface OfferData {
   eta: string;
   reasons: string[];
   isEligible: boolean;
+  denialReasons?: string[];
 }
 
 export function OfferCard({ profile, onOfferReady }: OfferCardProps) {
@@ -24,6 +27,7 @@ export function OfferCard({ profile, onOfferReady }: OfferCardProps) {
   const [loading, setLoading] = useState(false);
   const [offer, setOffer] = useState<OfferData | null>(null);
   const [loadingTime, setLoadingTime] = useState(0);
+  const { announce, AnnouncementRegion } = useScreenReaderAnnouncement();
 
   const checkEligibility = async () => {
     setLoading(true);
@@ -35,8 +39,11 @@ export function OfferCard({ profile, onOfferReady }: OfferCardProps) {
       setLoadingTime(Date.now() - startTime);
     }, 16);
 
-    const simulated = 400 + Math.random() * 350; // tighter range for better perceived perf
+    // Use configured timing from mock config
+    const simulated = MOCK_CONFIG.timing.minLoadingMs + 
+      Math.random() * (MOCK_CONFIG.timing.maxLoadingMs - MOCK_CONFIG.timing.minLoadingMs);
     const minSpinner = 450; // ensure spinner is visible but brief
+    
     await new Promise((resolve) => setTimeout(resolve, simulated));
 
     const elapsed = Date.now() - startTime;
@@ -47,10 +54,23 @@ export function OfferCard({ profile, onOfferReady }: OfferCardProps) {
     if (cancelled) return;
     clearInterval(interval);
 
-    const offerData = calculateOffer(profile);
+    const offerData = calculateOfferFromProfile(profile);
     setOffer(offerData);
     setLoading(false);
     onOfferReady(offerData);
+
+    // Screen reader announcement
+    if (offerData.isEligible) {
+      announce(
+        `Eligibility check complete. You're approved for up to $${offerData.limit} with a $${offerData.fee} flat fee.`,
+        "assertive"
+      );
+    } else {
+      announce(
+        `Eligibility check complete. Unfortunately, you're not eligible at this time. ${offerData.denialReasons?.join(", ") || ""}`,
+        "assertive"
+      );
+    }
 
     return () => {
       cancelled = true;
@@ -58,49 +78,17 @@ export function OfferCard({ profile, onOfferReady }: OfferCardProps) {
     };
   };
 
-  const calculateOffer = (profile: Profile): OfferData => {
-    const avgDeposit = profile.deposits.reduce((a, b) => a + b, 0) / profile.deposits.length;
-    const biweeklyAvg = avgDeposit;
+  const calculateOfferFromProfile = (profile: Profile): OfferData => {
+    const calculation = calculateMockOffer(profile.deposits, profile.nsfCount);
     
-    // Eligibility check
-    if (profile.nsfCount > 2 || avgDeposit < 200) {
-      return {
-        limit: 0,
-        fee: 0,
-        aprEquivalent: 0,
-        eta: "",
-        reasons: profile.nsfCount > 2 ? ["Too many NSF fees recently"] : ["Deposit amount too low"],
-        isEligible: false,
-      };
-    }
-
-    // Calculate limit
-    let limit = Math.min(500, Math.round(0.5 * biweeklyAvg));
-    
-    // Volatility adjustment
-    const variance = profile.deposits.reduce((acc, dep) => acc + Math.pow(dep - avgDeposit, 2), 0) / profile.deposits.length;
-    const stdDev = Math.sqrt(variance);
-    const volatility = stdDev / avgDeposit;
-    
-    if (volatility > 0.6) {
-      limit = Math.round(limit * 0.75);
-    }
-
-    const fee = Math.max(1, Math.min(5, Math.round(limit * 0.01)));
-    const aprEquivalent = Math.round((fee / limit) * (365 / 14) * 100);
-
-    const reasons = [];
-    if (profile.deposits.length >= 3) reasons.push("Steady deposits in last 30 days");
-    if (profile.nsfCount === 0) reasons.push("0 NSF in 60 days");
-    if (volatility <= 0.3) reasons.push("Consistent income pattern");
-
     return {
-      limit,
-      fee,
-      aprEquivalent,
-      eta: "2-3 minutes",
-      reasons,
-      isEligible: true,
+      limit: calculation.limit,
+      fee: calculation.fee,
+      aprEquivalent: calculation.aprEquivalent,
+      eta: `${MOCK_CONFIG.timing.etaMinutes} minutes`,
+      reasons: calculation.reasons,
+      isEligible: calculation.isEligible,
+      denialReasons: calculation.denialReasons,
     };
   };
 
@@ -118,6 +106,7 @@ export function OfferCard({ profile, onOfferReady }: OfferCardProps) {
             Check eligibility
           </Button>
         </div>
+        <AnnouncementRegion />
       </Card>
     );
   }
@@ -236,6 +225,7 @@ export function OfferCard({ profile, onOfferReady }: OfferCardProps) {
           })()}
         </div>
       </div>
+      <AnnouncementRegion />
     </Card>
   );
 }

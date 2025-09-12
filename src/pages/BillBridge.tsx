@@ -72,7 +72,7 @@ const BillBridge = () => {
     <div className="min-h-screen bg-background">
       <Navigation className="border-b border-border bg-surface/50 backdrop-blur" />
       
-      <main className="container mx-auto px-4 py-8">
+      <main id="main-content" className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">

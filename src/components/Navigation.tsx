@@ -30,25 +30,29 @@ export function Navigation({ className, selectedProfile, onProfileChange }: Navi
   const handleChange = onProfileChange ?? setLocalProfile;
 
   return (
-    <nav className={className}>
+    <nav className={className} id="navigation" aria-label="Main navigation">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-6">
             <FairFlowLogo />
             {/* Desktop Navigation - aligned left next to logo */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-8" role="menubar">
               {navItems.map((item) => (
                 <Link
                   key={item.label}
                   to={item.href}
-                  className="text-text-secondary hover:text-text-primary transition-colors text-sm font-medium"
+                  className="text-text-secondary hover:text-text-primary transition-colors text-sm font-medium
+                           focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-sm px-2 py-1"
+                  role="menuitem"
                 >
                   {item.label}
                 </Link>
               ))}
               <Link
                 to="/legal"
-                className="text-text-secondary hover:text-text-primary transition-colors text-sm font-medium md:hidden"
+                className="text-text-secondary hover:text-text-primary transition-colors text-sm font-medium md:hidden
+                         focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-sm px-2 py-1"
+                role="menuitem"
               >
                 Disclosures
               </Link>
@@ -66,7 +70,13 @@ export function Navigation({ className, selectedProfile, onProfileChange }: Navi
           {/* Mobile Navigation */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon" aria-label="Open menu">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                aria-label="Open navigation menu"
+                aria-expanded={isOpen}
+                aria-controls="mobile-navigation"
+              >
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
@@ -76,7 +86,7 @@ export function Navigation({ className, selectedProfile, onProfileChange }: Navi
                 <SheetTitle>Navigation Menu</SheetTitle>
                 <SheetDescription>Primary site navigation and profile selection</SheetDescription>
               </SheetHeader>
-              <div className="flex flex-col space-y-4 mt-8">
+              <div className="flex flex-col space-y-4 mt-8" id="mobile-navigation" role="navigation" aria-label="Mobile navigation">
                 <FairFlowLogo className="mb-4 pl-2" />
                 <div className="pl-2">
                   <ProfileSwitcher
@@ -84,23 +94,32 @@ export function Navigation({ className, selectedProfile, onProfileChange }: Navi
                     onProfileChange={(p) => { handleChange(p); setIsOpen(false); }}
                   />
                 </div>
-                {navItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    to={item.href}
-                    className="text-text-secondary hover:text-text-primary transition-colors text-lg font-medium py-2"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-                <Link
-                  to="/legal"
-                  className="text-text-secondary hover:text-text-primary transition-colors text-lg font-medium py-2"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Disclosures
-                </Link>
+                <ul className="space-y-2" role="menu">
+                  {navItems.map((item) => (
+                    <li key={item.label} role="none">
+                      <Link
+                        to={item.href}
+                        className="block text-text-secondary hover:text-text-primary transition-colors text-lg font-medium py-2
+                                 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-sm"
+                        onClick={() => setIsOpen(false)}
+                        role="menuitem"
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                  <li role="none">
+                    <Link
+                      to="/legal"
+                      className="block text-text-secondary hover:text-text-primary transition-colors text-lg font-medium py-2
+                               focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-sm"
+                      onClick={() => setIsOpen(false)}
+                      role="menuitem"
+                    >
+                      Disclosures
+                    </Link>
+                  </li>
+                </ul>
               </div>
             </SheetContent>
           </Sheet>

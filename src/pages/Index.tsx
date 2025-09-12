@@ -51,8 +51,7 @@ const Index = () => {
         hardshipUsage={Math.round(Math.random() * 30)}
       />
 
-      <main className="container mx-auto px-4 py-8">
-        {/* Hero Section */}
+      <main id="main-content" className="container mx-auto px-4 py-8">{/* Hero Section */}
         <div className="hero-bg text-center p-8 sm:p-10 mb-12">
           <h1 className="text-4xl sm:text-5xl font-slab font-bold text-text-primary mb-4">
             Money in minutes.{" "}
