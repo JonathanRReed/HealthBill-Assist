@@ -1,66 +1,38 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages (classic)
 
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
-
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: '1.2.21'
 
-      - name: Install dependencies (Bun)
+      - name: Install deps
         run: bun install --frozen-lockfile
 
-      - name: Build (Bun)
+      - name: Build with repo base
         env:
-          # Use relative base so assets work under any subpath on Pages
-          VITE_BASE: "./"
+          VITE_BASE: "/${{ github.event.repository.name }}/"
         run: |
           bun run build
-          bun run postbuild
+          bun run postbuild  # copies index.html -> 404.html and adds .nojekyll
+          # quick debug
+          ls -la dist
+          sed -n '1,120p' dist/index.html | sed -n '1,40p'
 
-      - name: Debug dist contents
-        run: |
-          echo "--- dist tree ---"
-          ls -R dist | sed -n '1,300p'
-          echo "--- index.html (first 120 lines) ---"
-          sed -n '1,120p' dist/index.html
-          echo "--- script src lines ---"
-          grep -n "<script" dist/index.html || true
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: ./dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          force_orphan: true
