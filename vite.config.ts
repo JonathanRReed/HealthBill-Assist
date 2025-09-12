@@ -27,29 +27,6 @@ export default defineConfig(({ mode }) => ({
     // Optimize for production
     sourcemap: mode === "development",
     minify: "esbuild",
-    rollupOptions: {
-      output: {
-        // Better chunk splitting for improved caching
-        manualChunks: (id) => {
-          // Vendor chunks
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'vendor-react';
-            }
-            if (id.includes('@radix-ui')) {
-              return 'vendor-ui';
-            }
-            if (id.includes('lucide-react')) {
-              return 'vendor-icons';
-            }
-            if (id.includes('react-router')) {
-              return 'vendor-router';
-            }
-            return 'vendor';
-          }
-        },
-      },
-    },
     // Optimize chunk size warnings
     chunkSizeWarningLimit: 500,
   },
