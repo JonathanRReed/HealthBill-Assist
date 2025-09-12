@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Zap, BarChart2, ShieldCheck } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
-import { ProfileSwitcher } from "@/components/ProfileSwitcher";
 import { profiles, Profile } from "@/data/profiles";
 import { Link } from "react-router-dom";
 import { OfferCard, OfferData } from "@/components/OfferCard";
@@ -40,7 +39,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation className="border-b border-border bg-surface/50 backdrop-blur" />
+      <Navigation 
+        className="border-b border-border bg-surface/50 backdrop-blur"
+        selectedProfile={selectedProfile}
+        onProfileChange={handleProfileChange}
+      />
       
       <JudgeOverlay 
         loadingTime={loadingTime}
@@ -51,13 +54,6 @@ const Index = () => {
       <main className="container mx-auto px-4 py-8">
         {/* Hero Section */}
         <div className="hero-bg text-center p-8 sm:p-10 mb-12">
-          <div className="flex justify-center mb-6">
-            <ProfileSwitcher 
-              selectedProfile={selectedProfile}
-              onProfileChange={handleProfileChange}
-            />
-          </div>
-          
           <h1 className="text-4xl sm:text-5xl font-slab font-bold text-text-primary mb-4">
             Money in minutes.{" "}
             <span className="text-gradient">A plan in seconds.</span>

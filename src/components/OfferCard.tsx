@@ -147,7 +147,7 @@ export function OfferCard({ profile, onOfferReady }: OfferCardProps) {
 
   if (!offer?.isEligible) {
     return (
-      <Card className="p-6 bg-surface border-border border-warning/20">
+      <Card className="p-6 bg-surface border-warning/20">
         <div className="text-center">
           <h2 className="text-xl font-rubik font-semibold text-text-primary mb-2">
             Not eligible right now

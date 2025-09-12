@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { FairFlowLogo } from "./FairFlowLogo";
 import { Link } from "react-router-dom";
+import { ProfileSwitcher } from "./ProfileSwitcher";
+import type { Profile } from "@/data/profiles";
+import { profiles } from "@/data/profiles";
 
 interface NavigationProps {
   className?: string;
+  selectedProfile?: Profile;
+  onProfileChange?: (profile: Profile) => void;
 }
 
 const navItems = [
@@ -14,29 +19,48 @@ const navItems = [
   { label: "BillBridge", href: "/bill-bridge" },
   { label: "Compare", href: "/comparison" },
   { label: "Plan", href: "/plan" },
-  { label: "Disclosures", href: "/legal" },
 ];
 
-export function Navigation({ className }: NavigationProps) {
+export function Navigation({ className, selectedProfile, onProfileChange }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
+  // Ensure a consistent top bar across pages: if no profile props are provided,
+  // manage a local profile so the switcher always shows.
+  const [localProfile, setLocalProfile] = useState<Profile>(selectedProfile ?? profiles[0]);
+  const effectiveProfile = selectedProfile ?? localProfile;
+  const handleChange = onProfileChange ?? setLocalProfile;
 
   return (
     <nav className={className}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <FairFlowLogo />
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
+          <div className="flex items-center gap-6">
+            <FairFlowLogo />
+            {/* Desktop Navigation - aligned left next to logo */}
+            <div className="hidden md:flex items-center space-x-8">
+              {navItems.map((item) => (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  className="text-text-secondary hover:text-text-primary transition-colors text-sm font-medium"
+                >
+                  {item.label}
+                </Link>
+              ))}
               <Link
-                key={item.label}
-                to={item.href}
-                className="text-text-secondary hover:text-text-primary transition-colors text-sm font-medium"
+                to="/legal"
+                className="text-text-secondary hover:text-text-primary transition-colors text-sm font-medium md:hidden"
               >
-                {item.label}
+                Disclosures
               </Link>
-            ))}
+            </div>
+          </div>
+
+          {/* Right side: Profile switcher */}
+          <div className="hidden md:block">
+            <ProfileSwitcher
+              selectedProfile={effectiveProfile}
+              onProfileChange={handleChange}
+            />
           </div>
 
           {/* Mobile Navigation */}
@@ -46,9 +70,20 @@ export function Navigation({ className }: NavigationProps) {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-surface border-border">
+            <SheetContent side="right" className="bg-surface border-border px-5 overflow-x-hidden">
+              {/* Accessible header for Dialog semantics */}
+              <SheetHeader className="sr-only">
+                <SheetTitle>Navigation Menu</SheetTitle>
+                <SheetDescription>Primary site navigation and profile selection</SheetDescription>
+              </SheetHeader>
               <div className="flex flex-col space-y-4 mt-8">
-                <FairFlowLogo className="mb-4" />
+                <FairFlowLogo className="mb-4 pl-2" />
+                <div className="pl-2">
+                  <ProfileSwitcher
+                    selectedProfile={effectiveProfile}
+                    onProfileChange={(p) => { handleChange(p); setIsOpen(false); }}
+                  />
+                </div>
                 {navItems.map((item) => (
                   <Link
                     key={item.label}
@@ -59,6 +94,13 @@ export function Navigation({ className }: NavigationProps) {
                     {item.label}
                   </Link>
                 ))}
+                <Link
+                  to="/legal"
+                  className="text-text-secondary hover:text-text-primary transition-colors text-lg font-medium py-2"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Disclosures
+                </Link>
               </div>
             </SheetContent>
           </Sheet>
