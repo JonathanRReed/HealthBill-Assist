@@ -4,6 +4,8 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // Base path for GitHub Pages (set via VITE_BASE in CI). Defaults to "/" for local/dev.
+  base: process.env.VITE_BASE || "/",
   server: {
     host: "::",
     port: 8080,
