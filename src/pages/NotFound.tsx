@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
@@ -33,10 +33,10 @@ const NotFound = () => {
                 Go Back
               </Button>
               <Button asChild>
-                <a href="/">
+                <Link to="/">
                   <Home className="w-4 h-4 mr-2" />
                   Return Home
-                </a>
+                </Link>
               </Button>
             </div>
           </Card>

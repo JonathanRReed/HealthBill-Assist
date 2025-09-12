@@ -3,6 +3,7 @@ import { Zap, BarChart2, ShieldCheck } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { ProfileSwitcher } from "@/components/ProfileSwitcher";
 import { profiles, Profile } from "@/data/profiles";
+import { Link } from "react-router-dom";
 import { OfferCard, OfferData } from "@/components/OfferCard";
 import { AmountInput } from "@/components/AmountInput";
 import { PlanTimeline } from "@/components/PlanTimeline";
@@ -178,9 +179,9 @@ const Index = () => {
       <footer className="border-t border-border mt-20 py-8">
         <div className="container mx-auto px-4 text-center">
           <div className="flex flex-wrap justify-center gap-6 mb-4 text-sm">
-            <a href="/bill-bridge" className="text-text-secondary hover:text-brand-gold">BillBridge</a>
-            <a href="/comparison" className="text-text-secondary hover:text-brand-gold">Compare Costs</a>
-            <a href="/legal" className="text-text-secondary hover:text-brand-gold">Disclosures</a>
+            <Link to="/bill-bridge" className="text-text-secondary hover:text-brand-gold">BillBridge</Link>
+            <Link to="/comparison" className="text-text-secondary hover:text-brand-gold">Compare Costs</Link>
+            <Link to="/legal" className="text-text-secondary hover:text-brand-gold">Disclosures</Link>
           </div>
           <p className="text-xs text-text-muted">
             This is a mock demonstration. FairFlow is a conceptual financial product for demo purposes.
