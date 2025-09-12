@@ -209,13 +209,6 @@ const Legal = () => {
             </p>
           </div>
 
-          {/* Contact */}
-          <div className="mt-8 text-center">
-            <p className="text-sm text-text-muted">
-              Questions about these terms? Contact our demo team at{" "}
-              <span className="text-brand-gold">demo@fairflow.com</span>
-            </p>
-          </div>
         </div>
       </main>
     </div>

@@ -13,6 +13,7 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "BillBridge", href: "/bill-bridge" },
   { label: "Compare", href: "/comparison" },
+  { label: "Plan", href: "/plan" },
   { label: "Disclosures", href: "/legal" },
 ];
 

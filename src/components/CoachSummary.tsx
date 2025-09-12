@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { toast } from "@/components/ui/sonner";
+import { addItem, PlanItem } from "@/lib/planStore";
+import { useNavigate } from "react-router-dom";
 
 interface CoachSummaryProps {
   amount: number;
@@ -16,6 +18,7 @@ export function CoachSummary({ amount, fee, hardshipMode, scheduleDate }: CoachS
   const [showExport, setShowExport] = useState(false);
   const [accepted, setAccepted] = useState(false);
   const total = amount + fee;
+  const navigate = useNavigate();
 
   const summaryPoints = [
     {
@@ -65,6 +68,17 @@ export function CoachSummary({ amount, fee, hardshipMode, scheduleDate }: CoachS
                 toast.success("Plan accepted", {
                   description: `Total $${total} with $${fee} fee • starts ${scheduleDate}`,
                 });
+                const item: PlanItem = {
+                  id: `cash-${Date.now()}`,
+                  type: "cash",
+                  amount,
+                  fee,
+                  total,
+                  scheduleDate,
+                  createdAt: Date.now(),
+                };
+                addItem(item);
+                navigate("/plan");
               }}
             >
               {accepted ? "Accepted" : "Accept Plan"}

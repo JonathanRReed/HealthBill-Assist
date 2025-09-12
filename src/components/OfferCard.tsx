@@ -28,21 +28,34 @@ export function OfferCard({ profile, onOfferReady }: OfferCardProps) {
   const checkEligibility = async () => {
     setLoading(true);
     setLoadingTime(0);
-    
     const startTime = Date.now();
+    let cancelled = false;
+
     const interval = setInterval(() => {
       setLoadingTime(Date.now() - startTime);
-    }, 10);
+    }, 16);
 
-    // Simulate API call with realistic timing
-    await new Promise(resolve => setTimeout(resolve, 600 + Math.random() * 400));
-    
+    const simulated = 400 + Math.random() * 350; // tighter range for better perceived perf
+    const minSpinner = 450; // ensure spinner is visible but brief
+    await new Promise((resolve) => setTimeout(resolve, simulated));
+
+    const elapsed = Date.now() - startTime;
+    if (elapsed < minSpinner) {
+      await new Promise((resolve) => setTimeout(resolve, minSpinner - elapsed));
+    }
+
+    if (cancelled) return;
     clearInterval(interval);
-    
+
     const offerData = calculateOffer(profile);
     setOffer(offerData);
     setLoading(false);
     onOfferReady(offerData);
+
+    return () => {
+      cancelled = true;
+      clearInterval(interval);
+    };
   };
 
   const calculateOffer = (profile: Profile): OfferData => {

@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calendar, DollarSign, Plus, ArrowRight, Lightbulb, Check } from "lucide-react";
 import { toast } from "@/components/ui/sonner";
+import { addItem, PlanItem } from "@/lib/planStore";
+import { useNavigate } from "react-router-dom";
 
 interface Bill {
   id: string;
@@ -26,6 +28,7 @@ const BillBridge = () => {
   const [selectedBill, setSelectedBill] = useState<Bill | null>(null);
   const [splitCount, setSplitCount] = useState(2);
   const [shiftOption, setShiftOption] = useState<"split" | "shift">("split");
+  const navigate = useNavigate();
 
   const calculateSplitSchedule = (bill: Bill, splits: number) => {
     const installmentAmount = Math.round(bill.amount / splits);
@@ -226,11 +229,27 @@ const BillBridge = () => {
                     <Button
                       className="w-full"
                       size="lg"
-                      onClick={() =>
+                      onClick={() => {
+                        if (!selectedBill) return;
+                        const mapped = schedule.map((p) => ({
+                          date: p.date.toISOString(),
+                          amount: p.amount,
+                          description: p.description,
+                        }));
+                        const item: PlanItem = {
+                          id: `bill-${selectedBill.id}-${Date.now()}`,
+                          type: "bill",
+                          name: selectedBill.name,
+                          amount: selectedBill.amount,
+                          schedule: mapped,
+                          createdAt: Date.now(),
+                        };
+                        addItem(item);
                         toast.success("Added to plan", {
                           description: `${selectedBill.name} • $${selectedBill.amount} scheduled`,
-                        })
-                      }
+                        });
+                        navigate("/plan");
+                      }}
                     >
                       Add to Payment Plan
                       <ArrowRight className="w-4 h-4 ml-2" />
