@@ -40,6 +40,15 @@ jobs:
           bun run build
           bun run postbuild
 
+      - name: Debug dist contents
+        run: |
+          echo "--- dist tree ---"
+          ls -R dist | sed -n '1,300p'
+          echo "--- index.html (first 120 lines) ---"
+          sed -n '1,120p' dist/index.html
+          echo "--- script src lines ---"
+          grep -n "<script" dist/index.html || true
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
