@@ -33,7 +33,7 @@ export default function Plan() {
     <div className="min-h-screen bg-background">
       <Navigation className="border-b border-border bg-surface/50 backdrop-blur" />
 
-      <main className="container mx-auto px-4 py-8">
+      <main id="main-content" className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <h1 className="text-4xl font-rubik font-bold text-text-primary">Your <span className="text-brand-gold">Plan</span></h1>

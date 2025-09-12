@@ -16,7 +16,7 @@ const NotFound = () => {
     <div className="min-h-screen bg-background">
       <Navigation className="border-b border-border bg-surface/50 backdrop-blur" />
       
-      <main className="container mx-auto px-4 py-16">
+      <main id="main-content" className="container mx-auto px-4 py-16">
         <div className="max-w-2xl mx-auto text-center">
           <Card className="p-12 bg-surface border-border">
             <div className="text-6xl font-rubik font-bold text-brand-gold mb-4">404</div>
