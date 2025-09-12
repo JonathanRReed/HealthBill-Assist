@@ -20,7 +20,8 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      {/* Use Vite's BASE_URL so routes work on GitHub Pages project URLs */}
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Suspense fallback={<div className="container mx-auto px-4 py-12 text-text-secondary">Loading…</div>}>
           <Routes>
             <Route path="/" element={<Index />} />
