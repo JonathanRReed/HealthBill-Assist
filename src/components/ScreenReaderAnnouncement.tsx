@@ -56,6 +56,7 @@ export function ScreenReaderAnnouncement({
 /**
  * Hook for making screen reader announcements
  */
+// eslint-disable-next-line react-refresh/only-export-components
 export function useScreenReaderAnnouncement() {
   const announcementRef = useRef<HTMLDivElement>(null);
 

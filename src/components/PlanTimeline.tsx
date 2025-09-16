@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useState, useMemo, useCallback, memo } from "react";
 import { Calendar, DollarSign, Clock, AlertCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { Profile } from "./ProfileSwitcher";
+import type { Profile } from "@/data/profiles";
 
 interface PlanTimelineProps {
   amount: number;
@@ -18,10 +17,10 @@ interface PaymentSchedule {
   description: string;
 }
 
-export function PlanTimeline({ amount, fee, profile }: PlanTimelineProps) {
+function PlanTimelineComponent({ amount, fee, profile: _profile }: PlanTimelineProps) {
   const [hardshipMode, setHardshipMode] = useState(false);
-  
-  const generateSchedule = (hardship: boolean = false): PaymentSchedule[] => {
+
+  const generateSchedule = useCallback((hardship: boolean = false): PaymentSchedule[] => {
     const total = amount + fee;
     const installmentAmount = Math.round(total / 2);
     const secondInstallment = total - installmentAmount;
@@ -54,17 +53,17 @@ export function PlanTimeline({ amount, fee, profile }: PlanTimelineProps) {
         description: "Final payment",
       },
     ];
-  };
+  }, [amount, fee]);
 
-  const schedule = generateSchedule(hardshipMode);
+  const schedule = useMemo(() => generateSchedule(hardshipMode), [generateSchedule, hardshipMode]);
 
-  const formatDate = (date: Date) => {
-    return date.toLocaleDateString('en-US', { 
+  const formatDate = useCallback((date: Date) => {
+    return date.toLocaleDateString('en-US', {
       weekday: 'short',
-      month: 'short', 
-      day: 'numeric' 
+      month: 'short',
+      day: 'numeric'
     });
-  };
+  }, []);
 
   return (
     <Card className="p-6 bg-surface border-border">
@@ -148,3 +147,5 @@ export function PlanTimeline({ amount, fee, profile }: PlanTimelineProps) {
     </Card>
   );
 }
+
+export const PlanTimeline = memo(PlanTimelineComponent);

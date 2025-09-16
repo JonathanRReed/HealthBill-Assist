@@ -3,7 +3,7 @@ import { Navigation } from "@/components/Navigation";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { TrendingDown, DollarSign, Calendar, AlertTriangle } from "lucide-react";
+import { TrendingDown, AlertTriangle } from "lucide-react";
 
 const Comparison = () => {
   const [amount, setAmount] = useState(200);
@@ -136,7 +136,7 @@ const Comparison = () => {
             </Card>
 
             {/* Payday Lending Card */}
-            <Card className="p-6 bg-surface border-border border-warning/20">
+            <Card className="p-6 bg-surface border-warning/20">
               <div className="mb-4">
                 <h2 className="text-xl font-rubik font-bold text-text-primary mb-2">
                   Typical Payday Loan

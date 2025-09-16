@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo, useCallback, memo } from "react";
 import { Download, CheckCircle, DollarSign, Calendar, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -14,13 +14,14 @@ interface CoachSummaryProps {
   scheduleDate: string;
 }
 
-export function CoachSummary({ amount, fee, hardshipMode, scheduleDate }: CoachSummaryProps) {
+export const CoachSummary = memo(CoachSummaryComponent);
+
+function CoachSummaryComponent({ amount, fee, hardshipMode, scheduleDate }: CoachSummaryProps) {
   const [showExport, setShowExport] = useState(false);
   const [accepted, setAccepted] = useState(false);
-  const total = amount + fee;
+  const total = useMemo(() => amount + fee, [amount, fee]);
   const navigate = useNavigate();
-
-  const summaryPoints = [
+  const summaryPoints = useMemo(() => ([
     {
       icon: DollarSign,
       text: `Get $${amount} in your account within 2-3 minutes`,
@@ -33,7 +34,7 @@ export function CoachSummary({ amount, fee, hardshipMode, scheduleDate }: CoachS
       icon: Shield,
       text: `Total cost: $${fee} flat fee • No late fees • Hardship extensions available`,
     },
-  ];
+  ]), [amount, total, scheduleDate, fee]);
 
   return (
     <div className="sticky bottom-4 z-10">
@@ -63,7 +64,7 @@ export function CoachSummary({ amount, fee, hardshipMode, scheduleDate }: CoachS
             <Button
               size="sm"
               className="flex-1"
-              onClick={() => {
+              onClick={useCallback(() => {
                 setAccepted(true);
                 toast.success("Plan accepted", {
                   description: `Total $${total} with $${fee} fee • starts ${scheduleDate}`,
@@ -79,7 +80,7 @@ export function CoachSummary({ amount, fee, hardshipMode, scheduleDate }: CoachS
                 };
                 addItem(item);
                 navigate("/plan");
-              }}
+              }, [amount, fee, total, scheduleDate, navigate])}
             >
               {accepted ? "Accepted" : "Accept Plan"}
             </Button>
