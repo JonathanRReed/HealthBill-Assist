@@ -209,6 +209,22 @@ const Legal = () => {
             </p>
           </div>
 
+          {/* Attributions */}
+          <div className="mt-6 p-6 bg-surface border border-border rounded-md">
+            <h3 className="font-medium text-text-primary mb-2">Attributions</h3>
+            <div className="text-sm text-text-secondary space-y-2">
+              <p>
+                Interface icons are provided by <a href="https://lucide.dev/" target="_blank" rel="noreferrer" className="underline hover:text-brand-gold">Lucide</a> under the ISC License.
+              </p>
+              <p>
+                The site favicon is a custom medical cross + heart SVG created for this demo and does not require attribution.
+              </p>
+              <p className="text-xs text-text-muted">
+                If any third‑party artwork is added in the future (e.g., unDraw or Humaaans illustrations), appropriate attribution and license links will be included here.
+              </p>
+            </div>
+          </div>
+
         </div>
       </main>
     </div>
