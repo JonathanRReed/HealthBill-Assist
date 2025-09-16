@@ -17,10 +17,10 @@ interface Bill {
 }
 
 const mockBills: Bill[] = [
-  { id: "1", name: "Emergency Room Bill", amount: 600, dueDate: "2025-09-14", category: "Hospital" },
-  { id: "2", name: "Prescription Costs", amount: 120, dueDate: "2025-09-17", category: "Pharmacy" },
-  { id: "3", name: "Specialist Appointment", amount: 345, dueDate: "2025-09-19", category: "Clinic" },
-  { id: "4", name: "Lab Tests", amount: 200, dueDate: "2025-09-21", category: "Lab" },
+  { id: "1", name: "Emergency Room Bill", amount: 740, dueDate: "2025-09-18", category: "Hospital" },
+  { id: "2", name: "Pharmacy (prescriptions)", amount: 118, dueDate: "2025-09-20", category: "Pharmacy" },
+  { id: "3", name: "Lab Tests", amount: 230, dueDate: "2025-09-22", category: "Lab" },
+  { id: "4", name: "Orthopedics Follow-up", amount: 365, dueDate: "2025-09-27", category: "Clinic" },
 ];
 
 const HealthBridge = () => {
@@ -213,6 +213,8 @@ const HealthBridge = () => {
                             <SelectItem value="2">2 payments</SelectItem>
                             <SelectItem value="3">3 payments</SelectItem>
                             <SelectItem value="4">4 payments</SelectItem>
+                            <SelectItem value="5">5 payments</SelectItem>
+                            <SelectItem value="6">6 payments</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
@@ -223,7 +225,7 @@ const HealthBridge = () => {
                     </div>
 
                     <div>
-                      <Button variant="ghost" size="sm" onClick={() => setHardship((h) => !h)}>
+                      <Button variant="ghost" size="sm" onClick={() => setHardship((h) => !h)} title="Move one payment out a cycle — no extra cost">
                         Need more time? Tap Hardship — extend one cycle, no penalty {hardship ? "(on)" : "(off)"}
                       </Button>
                     </div>
@@ -280,6 +282,9 @@ const HealthBridge = () => {
                         <Check className="w-3 h-3 text-success" />
                         <span>No additional fees • Same total cost • Keeps cash flow steady</span>
                       </div>
+                      <div className="text-xs text-text-muted mt-2">
+                        If this hospital offers a prompt-pay or Financial Assistance Policy (FAP), we’ll help apply it first so you may owe less.
+                      </div>
                     </div>
 
                     <Button
@@ -323,10 +328,10 @@ const HealthBridge = () => {
                   <div className="text-center">
                     <Plus className="w-12 h-12 text-text-muted mx-auto mb-4" />
                     <h3 className="text-lg font-medium text-text-primary mb-2">
-                      Select a bill to get started
+                      Select a medical bill to split or align with payday
                     </h3>
                     <p className="text-text-secondary">
-                      Choose a bill from the left to see payment options
+                      Funds go straight to your provider. Your fee is shown upfront. No interest, no late fees.
                     </p>
                   </div>
                 </Card>
