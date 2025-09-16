@@ -10,6 +10,10 @@ import { DisclaimerBanner, DisclaimerModal } from "@/components/DisclaimerBanner
 
 // Code-split routes for faster initial paint
 const Index = lazy(() => import("./pages/Index"));
+const About = lazy(() => import("./pages/About"));
+const Features = lazy(() => import("./pages/Features"));
+const FAQ = lazy(() => import("./pages/FAQ"));
+const Contact = lazy(() => import("./pages/Contact"));
 const BillBridge = lazy(() => import("./pages/BillBridge"));
 const Comparison = lazy(() => import("./pages/Comparison"));
 const Legal = lazy(() => import("./pages/Legal"));
@@ -55,6 +59,10 @@ const App = () => (
             <Suspense fallback={<LoadingFallback />}>
               <Routes>
                 <Route path="/" element={<Index />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/features" element={<Features />} />
+                <Route path="/faq" element={<FAQ />} />
+                <Route path="/contact" element={<Contact />} />
                 <Route path="/bill-bridge" element={<BillBridge />} />
                 <Route path="/comparison" element={<Comparison />} />
                 <Route path="/plan" element={<Plan />} />

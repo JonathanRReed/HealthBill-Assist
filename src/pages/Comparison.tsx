@@ -206,7 +206,7 @@ const Comparison = () => {
           {/* Disclaimer */}
           <div className="mt-8 p-4 bg-elevated rounded-md">
             <p className="text-xs text-text-muted leading-relaxed">
-              * APR-equivalent is shown for comparison purposes only. FairFlow charges a flat, 
+              * APR-equivalent is shown for comparison purposes only. HealthBill Assist charges a flat, 
               non-compounding fee with a $5 maximum. Payday loan costs are estimates based on 
               industry averages and may vary by lender. This comparison is for informational 
               purposes and does not constitute financial advice.
