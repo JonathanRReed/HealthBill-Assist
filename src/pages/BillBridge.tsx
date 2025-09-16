@@ -78,9 +78,24 @@ const BillBridge = () => {
             <h1 className="text-4xl font-rubik font-bold text-text-primary mb-4">
               Bill<span className="text-brand-gold">Bridge</span>
             </h1>
-            <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-              Split large bills into smaller payments or shift them to align with your payday. 
-              Same total cost, better cash flow.
+            <p className="text-xl text-text-secondary max-w-3xl mx-auto">
+              Split large bills into smaller payments or shift them to align with your payday.
+              Same total cost, better cash flow — <span className="text-text-primary font-medium">no late fees, no rollovers</span>.
+            </p>
+
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+              <div className="chip-gold">Align to payday</div>
+              <div className="chip-neutral">Transparent, flat-fee ecosystem</div>
+              <div className="chip-success">Hardship = more time, not more cost</div>
+            </div>
+          </div>
+
+          {/* Mock demo banner */}
+          <div className="mb-8 p-4 rounded-lg border border-border bg-surface/60">
+            <p className="text-sm text-text-secondary">
+              This is a <span className="text-text-primary font-medium">mock demo</span> built for the
+              <span className="text-text-primary font-medium"> Wells Fargo × GCA Early Talent Competition</span>.
+              It simulates bills and plans for demonstration only.
             </p>
           </div>
 
@@ -124,7 +139,7 @@ const BillBridge = () => {
                 <div className="mt-4 p-3 bg-info/10 border border-info/20 rounded-md flex items-start gap-2">
                   <Lightbulb className="w-4 h-4 text-info mt-0.5" />
                   <p className="text-sm text-text-secondary">
-                    In production, this would connect to your bank to show real bills
+                    In production, this would connect to your bank to show real bills and due dates.
                   </p>
                 </div>
               </Card>
@@ -221,7 +236,7 @@ const BillBridge = () => {
                       </div>
                       <div className="text-xs text-text-muted mt-1 flex items-center gap-2">
                         <Check className="w-3 h-3 text-success" />
-                        <span>No additional fees • Same total cost</span>
+                        <span>No additional fees • Same total cost • Keeps cash flow steady</span>
                       </div>
                     </div>
 
@@ -253,6 +268,10 @@ const BillBridge = () => {
                       Add to Payment Plan
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
+
+                    <div className="text-center text-sm text-text-secondary">
+                      Want to compare options? Check the <button className="underline hover:text-text-primary" onClick={() => navigate('/comparison')}>Comparison</button> or view your <button className="underline hover:text-text-primary" onClick={() => navigate('/plan')}>Coach Summary</button>.
+                    </div>
                   </div>
                 </Card>
               )}
