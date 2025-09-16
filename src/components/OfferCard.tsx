@@ -97,13 +97,13 @@ export function OfferCard({ profile, onOfferReady }: OfferCardProps) {
       <Card className="p-6 bg-surface border-border">
         <div className="text-center">
           <h2 className="text-2xl font-rubik font-bold text-text-primary mb-4">
-            Get instant relief
+            Get medical bill relief
           </h2>
           <p className="text-text-secondary mb-6">
-            Check your eligibility for fair, transparent cash flow support
+            Check eligibility for a fair, transparent Relief Advance
           </p>
-          <Button onClick={checkEligibility} size="lg" className="w-full btn-glow">
-            Check eligibility
+          <Button onClick={checkEligibility} size="lg" className="w-full btn-glow btn-soft-hover">
+            Get Relief Now
           </Button>
         </div>
         <AnnouncementRegion />
