@@ -258,82 +258,83 @@ const Index = () => {
           </div>
         )}
 
-        {/* Beyond the Bill */}
-        <div className="mt-16 max-w-6xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl font-rubik font-bold text-text-primary mb-3">Beyond the Bill</h2>
-            <p className="text-text-secondary">Relief → Repay → Rebuild. On-time payments and gentle savings nudges help rebuild confidence.</p>
+        {/* Beyond the Bill (lightweight) */}
+        <div className="mt-16 max-w-5xl mx-auto">
+          <div className="text-center mb-6">
+            <h2 className="text-2xl font-rubik font-bold text-text-primary">Beyond the Bill</h2>
+            <p className="text-text-secondary mt-1">Relief → Repay → Rebuild. Gentle savings nudges help rebuild confidence.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="glass-panel p-6 hover-lift">
-              <div className="w-10 h-10 bg-brand-gold/20 rounded-lg flex items-center justify-center mb-3">
-                <span className="font-rubik font-bold text-brand-gold">1</span>
+          <ol className="grid sm:grid-cols-3 gap-4 text-sm">
+            <li className="flex items-start gap-3">
+              <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-brand-gold/20 text-brand-gold font-bold">1</span>
+              <div>
+                <div className="text-text-primary font-medium">Relief</div>
+                <div className="text-text-secondary">Instant help for ER, prescriptions, and surprise bills</div>
               </div>
-              <h3 className="font-medium text-text-primary mb-2">Relief</h3>
-              <p className="text-sm text-text-secondary">Instant help for ER, prescription, and surprise bills</p>
-            </div>
-            <div className="glass-panel p-6 hover-lift">
-              <div className="w-10 h-10 bg-brand-gold/20 rounded-lg flex items-center justify-center mb-3">
-                <span className="font-rubik font-bold text-brand-gold">2</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-brand-gold/20 text-brand-gold font-bold">2</span>
+              <div>
+                <div className="text-text-primary font-medium">Repayment</div>
+                <div className="text-text-secondary">Fair, flexible payments—no rollovers or late fees</div>
               </div>
-              <h3 className="font-medium text-text-primary mb-2">Repayment</h3>
-              <p className="text-sm text-text-secondary">Fair, flexible payments without rollovers or late fees</p>
-            </div>
-            <div className="glass-panel p-6 hover-lift">
-              <div className="w-10 h-10 bg-brand-gold/20 rounded-lg flex items-center justify-center mb-3">
-                <span className="font-rubik font-bold text-brand-gold">3</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-brand-gold/20 text-brand-gold font-bold">3</span>
+              <div>
+                <div className="text-text-primary font-medium">Rebuild</div>
+                <div className="text-text-secondary">Savings nudges and ways to build confidence over time</div>
               </div>
-              <h3 className="font-medium text-text-primary mb-2">Rebuild</h3>
-              <p className="text-sm text-text-secondary">Savings nudges and opportunities to build credit over time</p>
-            </div>
-          </div>
+            </li>
+          </ol>
         </div>
 
-        {/* Features Grid (Medical-focused) */}
-        <div className="mt-20 max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl font-rubik font-bold text-text-primary mb-4">
-              Healthcare-focused features that put people first
-            </h2>
-            <p className="text-text-secondary">
-              Split bills, hardship extensions, and direct provider payments—all with clear pricing
-            </p>
+        {/* Features (lightweight) */}
+        <div className="mt-16 max-w-5xl mx-auto">
+          <div className="text-center mb-6">
+            <h2 className="text-2xl font-rubik font-bold text-text-primary">What you get</h2>
+            <p className="text-text-secondary">Clear pricing, direct pay to providers, and help when you need time</p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="glass-panel p-6 text-center hover-lift">
-              <div className="w-12 h-12 bg-brand-gold/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <CalendarDays className="w-6 h-6 text-brand-gold" />
+          <ul className="space-y-3 text-sm">
+            <li className="flex items-start gap-3">
+              <div className="mt-0.5 w-6 h-6 rounded bg-brand-gold/20 flex items-center justify-center">
+                <CalendarDays className="w-4 h-4 text-brand-gold" />
               </div>
-              <h3 className="font-medium text-text-primary mb-2">Bill Splitting</h3>
-              <p className="text-sm text-text-secondary">Break large ER/hospital bills into smaller chunks</p>
-            </div>
-
-            <div className="glass-panel p-6 text-center hover-lift">
-              <div className="w-12 h-12 bg-brand-gold/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-6 h-6 text-brand-gold" />
+              <div>
+                <div className="text-text-primary font-medium">HealthBridge</div>
+                <div className="text-text-secondary">Split or align bills so payments match your payday</div>
               </div>
-              <h3 className="font-medium text-text-primary mb-2">Hardship Toggle</h3>
-              <p className="text-sm text-text-secondary">Delay one cycle without penalties or fees</p>
-            </div>
-
-            <div className="glass-panel p-6 text-center hover-lift">
-              <div className="w-12 h-12 bg-brand-gold/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <Hospital className="w-6 h-6 text-brand-gold" />
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="mt-0.5 w-6 h-6 rounded bg-brand-gold/20 flex items-center justify-center">
+                <Shield className="w-4 h-4 text-brand-gold" />
               </div>
-              <h3 className="font-medium text-text-primary mb-2">Direct Pay</h3>
-              <p className="text-sm text-text-secondary">Funds go straight to hospitals or pharmacies</p>
-            </div>
-
-            <div className="glass-panel p-6 text-center hover-lift">
-              <div className="w-12 h-12 bg-brand-gold/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <Heart className="w-6 h-6 text-brand-gold" />
+              <div>
+                <div className="text-text-primary font-medium">Hardship toggle</div>
+                <div className="text-text-secondary">Move one payment out a cycle—no penalty, no extra cost</div>
               </div>
-              <h3 className="font-medium text-text-primary mb-2">Confidence Builder</h3>
-              <p className="text-sm text-text-secondary">On-time payments help unlock reduced fees</p>
-            </div>
-          </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="mt-0.5 w-6 h-6 rounded bg-brand-gold/20 flex items-center justify-center">
+                <Hospital className="w-4 h-4 text-brand-gold" />
+              </div>
+              <div>
+                <div className="text-text-primary font-medium">Direct-to-provider pay</div>
+                <div className="text-text-secondary">Hospitals, clinics, pharmacies—your care isn’t delayed</div>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="mt-0.5 w-6 h-6 rounded bg-brand-gold/20 flex items-center justify-center">
+                <Heart className="w-4 h-4 text-brand-gold" />
+              </div>
+              <div>
+                <div className="text-text-primary font-medium">Confidence builder</div>
+                <div className="text-text-secondary">On-time payments help unlock reduced fees over time</div>
+              </div>
+            </li>
+          </ul>
         </div>
       </main>
 
