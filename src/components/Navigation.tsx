@@ -79,6 +79,7 @@ export function Navigation({ className, selectedProfile, onProfileChange }: Navi
             <ProfileSwitcher
               selectedProfile={effectiveProfile}
               onProfileChange={handleChange}
+              compact
             />
           </div>
 

@@ -74,7 +74,7 @@ const Index = () => {
         </div>
 
         {/* From Panic to Plan (Storyboard) */}
-        <div className="mt-20 max-w-6xl mx-auto">
+        <div className="mt-16 max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 items-start">
             <div className="space-y-4">
               <h2 className="text-2xl font-rubik font-bold text-text-primary">From Panic to Plan</h2>
@@ -94,9 +94,12 @@ const Index = () => {
           </div>
         </div>
 
+        {/* Divider with extra breathing room before next section */}
+        <div className="max-w-6xl mx-auto border-t border-border mt-24 mb-16" />
+
         {/* How it works + Demo Flow (moved below storyboard) */}
         {/* Solution Section Intro */}
-        <div id="how-it-works" className="max-w-5xl mx-auto mb-6 mt-16 text-center">
+        <div id="how-it-works" className="max-w-5xl mx-auto mb-6 text-center">
           <h2 className="text-2xl font-rubik font-bold text-text-primary mb-2">Relief in minutes, not months</h2>
           <p className="text-text-secondary">Funds pay your provider directly—so your care isn’t delayed.</p>
         </div>
@@ -163,7 +166,7 @@ const Index = () => {
         )}
 
         {/* Why Wells Fargo (Trust) */}
-        <div className="mt-20 max-w-6xl mx-auto">
+        <div className="mt-16 max-w-6xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-rubik font-bold text-text-primary mb-3">Why Wells Fargo</h2>
           </div>
@@ -189,7 +192,7 @@ const Index = () => {
         </div>
 
         {/* Personal Note (Founder/Story) */}
-        <div className="mt-20 max-w-4xl mx-auto">
+        <div className="mt-20 mb-16 max-w-4xl mx-auto">
           <div className="bg-surface border border-border rounded-2xl p-6 md:p-8 shadow-soft">
             <h2 className="text-2xl font-rubik font-bold text-text-primary mb-3">Why this matters to me</h2>
             <p className="text-text-secondary leading-relaxed">
@@ -198,9 +201,8 @@ const Index = () => {
           </div>
         </div>
 
-
         {/* Problem Section */}
-        <div className="max-w-6xl mx-auto mb-12">
+        <div className="max-w-6xl mx-auto mb-12 mt-20">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-rubik font-bold text-text-primary mb-4">Why medical bills hit harder</h2>
             <p className="text-text-secondary">A sudden ER visit, an ambulance ride, a prescription you need today—medical bills don’t wait. For too many people, that moment means panic and high-interest options that make things worse.</p>
@@ -269,7 +271,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border mt-20 py-8">
+      <footer className="border-t border-border mt-16 py-8">
         <div className="container mx-auto px-4 text-center">
           <div className="flex flex-wrap justify-center gap-6 mb-4 text-sm">
             <Link to="/health-bridge" className="text-text-secondary hover:text-brand-gold">HealthBridge</Link>
