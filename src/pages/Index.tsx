@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Zap, BarChart2, ShieldCheck } from "lucide-react";
+import { CalendarDays, Heart, Hospital, Shield } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { profiles, Profile } from "@/data/profiles";
 import { Link } from "react-router-dom";
@@ -51,16 +51,72 @@ const Index = () => {
         hardshipUsage={Math.round(Math.random() * 30)}
       />
 
-      <main id="main-content" className="container mx-auto px-4 py-8">{/* Hero Section */}
+      <main id="main-content" className="container mx-auto px-4 py-8">{/* Hero Section (Medical-focused) */}
         <div className="hero-bg text-center p-8 sm:p-10 mb-12">
           <h1 className="text-4xl sm:text-5xl font-slab font-bold text-text-primary mb-4">
-            Money in minutes.{" "}
-            <span className="text-gradient">A plan in seconds.</span>
+            When medical bills hit out of nowhere,
+            {" "}
+            <span className="text-gradient">relief should be fast, fair, and stress-free.</span>
           </h1>
-          
-          <p className="text-xl text-text-secondary max-w-2xl mx-auto mb-8">
-            Fair, transparent cash flow support when you need it most. 
-            No surprises, no rollovers, no late fees.
+
+          <p className="text-xl text-text-secondary max-w-2xl mx-auto mb-6">
+            HealthBill Assist helps patients manage unexpected healthcare costs without falling into debt traps.
+          </p>
+
+          <p className="text-sm text-text-muted max-w-xl mx-auto">
+            I’ve seen how medical debt creates stress—this project reimagines how a bank could change that.
+          </p>
+        </div>
+
+        {/* Problem Section */}
+        <div className="max-w-6xl mx-auto mb-12">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-rubik font-bold text-text-primary mb-4">
+              Medical costs arrive fast. Cash rarely does.
+            </h2>
+            <p className="text-text-secondary">
+              Ambulance bills, ER copays, and urgent prescriptions can’t wait. Your money should.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="glass-panel p-6 text-center hover-lift">
+              <div className="w-12 h-12 bg-brand-gold/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Hospital className="w-6 h-6 text-brand-gold" />
+              </div>
+              <h3 className="font-medium text-text-primary mb-2">Ambulance & ER</h3>
+              <p className="text-sm text-text-secondary">Surprise visits shouldn’t become long-term debt</p>
+            </div>
+
+            <div className="glass-panel p-6 text-center hover-lift">
+              <div className="w-12 h-12 bg-brand-gold/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Heart className="w-6 h-6 text-brand-gold" />
+              </div>
+              <h3 className="font-medium text-text-primary mb-2">Prescriptions</h3>
+              <p className="text-sm text-text-secondary">Fill today, repay simply over time</p>
+            </div>
+
+            <div className="glass-panel p-6 text-center hover-lift">
+              <div className="w-12 h-12 bg-brand-gold/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <CalendarDays className="w-6 h-6 text-brand-gold" />
+              </div>
+              <h3 className="font-medium text-text-primary mb-2">Follow-up bills</h3>
+              <p className="text-sm text-text-secondary">Flexible timing aligned with paydays</p>
+            </div>
+          </div>
+
+          <div className="mt-6 text-center text-sm text-text-muted">
+            Medical expenses are the #1 cause of debt collections in the U.S., affecting nearly 1 in 5 adults.
+          </div>
+        </div>
+
+        {/* Solution Section Intro */}
+        <div className="max-w-5xl mx-auto mb-6 text-center">
+          <h2 className="text-2xl font-rubik font-bold text-text-primary mb-2">
+            HealthBill Assist: simple, fair medical bill help
+          </h2>
+          <p className="text-text-secondary">
+            Split or delay medical bills into manageable payments. Flat, transparent fee—no hidden interest. Pay hospitals or pharmacies directly.
           </p>
         </div>
 
@@ -125,46 +181,80 @@ const Index = () => {
           </div>
         )}
 
-        {/* Features Grid */}
-        <div className="mt-20 max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl font-rubik font-bold text-text-primary mb-4">
-              Built for fairness, designed for confidence
-            </h2>
-            <p className="text-text-secondary">
-              Transparent pricing, flexible terms, and your financial wellness at heart
-            </p>
+        {/* Beyond the Bill */}
+        <div className="mt-16 max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-rubik font-bold text-text-primary mb-3">Beyond the Bill</h2>
+            <p className="text-text-secondary">Once the bill is covered, HealthBill Assist helps rebuild confidence with savings nudges and credit growth.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
+            <div className="glass-panel p-6 hover-lift">
+              <div className="w-10 h-10 bg-brand-gold/20 rounded-lg flex items-center justify-center mb-3">
+                <span className="font-rubik font-bold text-brand-gold">1</span>
+              </div>
+              <h3 className="font-medium text-text-primary mb-2">Relief</h3>
+              <p className="text-sm text-text-secondary">Instant help for ER, prescription, and surprise bills</p>
+            </div>
+            <div className="glass-panel p-6 hover-lift">
+              <div className="w-10 h-10 bg-brand-gold/20 rounded-lg flex items-center justify-center mb-3">
+                <span className="font-rubik font-bold text-brand-gold">2</span>
+              </div>
+              <h3 className="font-medium text-text-primary mb-2">Repayment</h3>
+              <p className="text-sm text-text-secondary">Fair, flexible payments without rollovers or late fees</p>
+            </div>
+            <div className="glass-panel p-6 hover-lift">
+              <div className="w-10 h-10 bg-brand-gold/20 rounded-lg flex items-center justify-center mb-3">
+                <span className="font-rubik font-bold text-brand-gold">3</span>
+              </div>
+              <h3 className="font-medium text-text-primary mb-2">Rebuild</h3>
+              <p className="text-sm text-text-secondary">Savings nudges and opportunities to build credit over time</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Features Grid (Medical-focused) */}
+        <div className="mt-20 max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl font-rubik font-bold text-text-primary mb-4">
+              Healthcare-focused features that put people first
+            </h2>
+            <p className="text-text-secondary">
+              Split bills, hardship extensions, and direct provider payments—all with clear pricing
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-6">
             <div className="glass-panel p-6 text-center hover-lift">
               <div className="w-12 h-12 bg-brand-gold/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <Zap className="w-6 h-6 text-brand-gold" />
+                <CalendarDays className="w-6 h-6 text-brand-gold" />
               </div>
-              <h3 className="font-medium text-text-primary mb-2">Instant Relief</h3>
-              <p className="text-sm text-text-secondary">
-                Money in your account within minutes, not days
-              </p>
+              <h3 className="font-medium text-text-primary mb-2">Bill Splitting</h3>
+              <p className="text-sm text-text-secondary">Break large ER/hospital bills into smaller chunks</p>
             </div>
 
             <div className="glass-panel p-6 text-center hover-lift">
               <div className="w-12 h-12 bg-brand-gold/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <BarChart2 className="w-6 h-6 text-brand-gold" />
+                <Shield className="w-6 h-6 text-brand-gold" />
               </div>
-              <h3 className="font-medium text-text-primary mb-2">Complete Transparency</h3>
-              <p className="text-sm text-text-secondary">
-                Flat fees, APR-equivalent shown, no hidden costs
-              </p>
+              <h3 className="font-medium text-text-primary mb-2">Hardship Toggle</h3>
+              <p className="text-sm text-text-secondary">Delay one cycle without penalties or fees</p>
             </div>
 
             <div className="glass-panel p-6 text-center hover-lift">
               <div className="w-12 h-12 bg-brand-gold/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <ShieldCheck className="w-6 h-6 text-brand-gold" />
+                <Hospital className="w-6 h-6 text-brand-gold" />
               </div>
-              <h3 className="font-medium text-text-primary mb-2">Built-in Protection</h3>
-              <p className="text-sm text-text-secondary">
-                No late fees, hardship extensions, small limits
-              </p>
+              <h3 className="font-medium text-text-primary mb-2">Direct Pay</h3>
+              <p className="text-sm text-text-secondary">Funds go straight to hospitals or pharmacies</p>
+            </div>
+
+            <div className="glass-panel p-6 text-center hover-lift">
+              <div className="w-12 h-12 bg-brand-gold/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Heart className="w-6 h-6 text-brand-gold" />
+              </div>
+              <h3 className="font-medium text-text-primary mb-2">Confidence Builder</h3>
+              <p className="text-sm text-text-secondary">On-time payments help unlock reduced fees</p>
             </div>
           </div>
         </div>

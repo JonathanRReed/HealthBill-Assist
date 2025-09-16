@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Clock, CheckCircle, TrendingUp, Shield } from "lucide-react";
+import { Clock, CheckCircle, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Profile } from "@/data/profiles";
-import { calculateMockOffer, MOCK_CONFIG, formatPaymentDate, generatePaymentDates } from "@/lib/mockConfig";
+import { calculateMockOffer, MOCK_CONFIG } from "@/lib/mockConfig";
 import { useScreenReaderAnnouncement } from "@/components/ScreenReaderAnnouncement";
 
 interface OfferCardProps {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Eye, EyeOff, Clock, Activity, TrendingUp, Zap, Check } from "lucide-react";
+import { EyeOff, Clock, Activity, TrendingUp, Zap, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
@@ -11,19 +11,11 @@ interface JudgeOverlayProps {
 
 export function JudgeOverlay({ loadingTime = 0, events = [], hardshipUsage = 0 }: JudgeOverlayProps) {
   const [isVisible, setIsVisible] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
 
   useEffect(() => {
     // Check URL params for judge mode
     const urlParams = new URLSearchParams(window.location.search);
     setIsVisible(urlParams.get('judge') === '1');
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTime(Date.now());
-    }, 100);
-    return () => clearInterval(interval);
   }, []);
 
   if (!isVisible) {

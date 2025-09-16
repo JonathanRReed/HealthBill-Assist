@@ -8,51 +8,51 @@
 
 @layer base {
   :root {
-    /* Core Neutrals - Dark Mode Foundation */
-    --background: 213 15% 7%;           /* #0C0F12 - App background */
-    --surface: 215 17% 13%;             /* #141A22 - Card/surface */
-    --elevated: 218 19% 17%;            /* #1B2230 - Elevated surfaces */
-    --foreground: 214 24% 91%;          /* #E7ECF2 - Primary text */
+    /* Core Neutrals - Softer, human dark mode with teal undertone */
+    --background: 198 28% 8%;           /* Deep teal-gray */
+    --surface: 198 22% 14%;             /* Soft panel */
+    --elevated: 198 20% 18%;            /* Elevated cards */
+    --foreground: 190 25% 92%;          /* Primary text */
     
     /* Text Hierarchy */
-    --text-primary: 214 24% 91%;        /* #E7ECF2 - Headlines, primary */
-    --text-secondary: 214 15% 68%;      /* #A8B2C3 - Body, secondary */
-    --text-muted: 214 12% 59%;          /* #8C97A9 - Muted, disabled */
+    --text-primary: 190 25% 92%;        /* Headlines, primary */
+    --text-secondary: 200 15% 70%;      /* Body, secondary */
+    --text-muted: 200 12% 60%;          /* Muted, disabled */
     
-    /* Brand Colors - Wells Inspired */
-    --brand-red: 0 77% 42%;             /* #C51111 - Primary CTA */
-    --brand-red-hover: 0 72% 37%;       /* #AD0F10 - Hover state */
-    --brand-red-focus: 0 67% 31%;       /* #8F0D0E - Focus/pressed */
+    /* Brand Colors - Teal + Coral */
+    --brand-red: 188 84% 40%;           /* Primary = Calm teal */
+    --brand-red-hover: 188 84% 36%;     /* Darker teal on hover */
+    --brand-red-focus: 188 84% 32%;     /* Pressed teal */
     
-    --brand-gold: 38 88% 56%;           /* #F2B72A - Highlight/secondary */
-    --brand-gold-hover: 38 79% 50%;     /* #D9A324 - Hover */
-    --brand-gold-focus: 38 69% 43%;     /* #B9891E - Focus */
+    --brand-gold: 14 88% 62%;           /* Secondary = Warm coral */
+    --brand-gold-hover: 14 82% 56%;     /* Coral hover */
+    --brand-gold-focus: 14 72% 48%;     /* Coral focus */
     
     /* Semantic Colors */
-    --success: 142 76% 36%;             /* #16A34A */
-    --warning: 32 95% 48%;              /* #F59E0B */
-    --error: 0 77% 42%;                 /* #C51111 - Same as brand red */
-    --info: 221 83% 53%;                /* #3B82F6 */
+    --success: 150 65% 40%;             /* Fresh green */
+    --warning: 32 95% 48%;              /* Amber */
+    --error: 2 72% 52%;                 /* Soft red */
+    --info: 188 84% 40%;                /* Teal */
     
     /* Interactive Elements */
-    --border: 215 14% 21%;              /* #2A3344 - Hairlines, borders */
-    --border-hover: 215 14% 28%;        /* Hover state borders */
-    --input: 215 17% 13%;               /* #141A22 - Input backgrounds */
-    --focus-ring: 38 88% 56%;           /* #F2B72A - Gold focus rings */
+    --border: 198 16% 22%;              /* Soft borders */
+    --border-hover: 198 18% 28%;        /* Hover borders */
+    --input: 198 22% 14%;               /* Input backgrounds */
+    --focus-ring: 14 88% 62%;           /* Coral focus rings */
     
     /* Glass Effects */
-    --glass-bg: 215 17% 13% / 0.8;      /* Semi-transparent surfaces */
-    --glass-border: 214 24% 91% / 0.1;  /* Subtle glass borders */
+    --glass-bg: 198 22% 14% / 0.8;      /* Semi-transparent surfaces */
+    --glass-border: 190 25% 92% / 0.08; /* Subtle glass borders */
     
     /* Gradients */
     --gradient-brand: linear-gradient(135deg, hsl(var(--brand-red)), hsl(var(--brand-gold)));
-    --gradient-gold-glow: linear-gradient(180deg, hsl(var(--brand-gold) / 0.16), transparent);
+    --gradient-gold-glow: linear-gradient(180deg, hsl(var(--brand-gold) / 0.18), transparent);
     --gradient-subtle: linear-gradient(180deg, hsl(var(--elevated)), hsl(var(--surface)));
     
     /* Shadows */
-    --shadow-sm: 0 2px 8px hsl(213 15% 2% / 0.35);
-    --shadow-md: 0 8px 24px hsl(213 15% 2% / 0.35);
-    --shadow-glow: 0 0 40px hsl(var(--brand-gold) / 0.4);
+    --shadow-sm: 0 2px 8px hsl(198 20% 4% / 0.35);
+    --shadow-md: 0 8px 24px hsl(198 20% 4% / 0.35);
+    --shadow-glow: 0 0 40px hsl(var(--brand-red) / 0.35);
     
     /* Component tokens */
     --card: var(--surface);
@@ -81,10 +81,10 @@
     --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
-  /* Hero background composite: diagonal red->gold blend with subtle noise */
+  /* Hero background composite: diagonal teal->coral blend with subtle noise */
   .hero-bg {
     position: relative;
-    background: linear-gradient(135deg, hsl(var(--brand-red) / 0.16), hsl(var(--brand-gold) / 0.12));
+    background: linear-gradient(135deg, hsl(var(--brand-red) / 0.16), hsl(var(--brand-gold) / 0.14));
     border: 1px solid hsl(var(--glass-border));
     box-shadow: var(--shadow-md);
     border-radius: 16px;
@@ -109,10 +109,10 @@
   body {
     @apply bg-background text-foreground font-inter antialiased;
     font-feature-settings: "cv03", "cv04", "cv11";
-    /* Sitewide background: deep base + diagonal brand wash + subtle gold glow */
+    /* Sitewide background: deep base + diagonal brand wash + subtle coral glow */
     background:
-      linear-gradient(135deg, hsl(var(--brand-red) / 0.08), hsl(var(--brand-gold) / 0.06)),
-      radial-gradient(1000px 600px at 85% -10%, hsl(var(--brand-gold) / 0.10), transparent 65%),
+      linear-gradient(135deg, hsl(var(--brand-red) / 0.08), hsl(var(--brand-gold) / 0.07)),
+      radial-gradient(1000px 600px at 85% -10%, hsl(var(--brand-gold) / 0.12), transparent 65%),
       hsl(var(--background));
     color: hsl(var(--text-primary));
   }
@@ -219,7 +219,22 @@
     transition: box-shadow 0.2s var(--transition-smooth);
   }
   .btn-glow:hover {
-    box-shadow: 0 0 0 3px hsl(var(--brand-gold) / 0.15), 0 6px 24px hsl(var(--brand-gold) / 0.18);
+    box-shadow: 0 0 0 3px hsl(var(--brand-red) / 0.18), 0 6px 24px hsl(var(--brand-red) / 0.20);
+  }
+
+  /* Friendly button micro-interaction */
+  .btn-soft-hover {
+    transition: transform 0.15s var(--transition-smooth), box-shadow 0.2s var(--transition-smooth);
+  }
+  .btn-soft-hover:hover {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 6px 24px hsl(var(--brand-red) / 0.18);
+  }
+
+  /* Heartbeat loading helper (pair with an icon) */
+  .loading-heart {
+    @apply inline-flex items-center justify-center;
+    animation: heartbeat 1.2s ease-in-out infinite;
   }
   
   /* Custom scrollbar */

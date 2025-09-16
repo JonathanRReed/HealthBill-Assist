@@ -85,7 +85,7 @@ export default {
         sm: "var(--radius-sm)",
       },
       fontFamily: {
-        'rubik': ['Rubik', 'sans-serif'],
+        'rubik': ['Poppins', 'Rubik', 'sans-serif'],
         'inter': ['Inter', 'sans-serif'],
       },
       boxShadow: {
@@ -103,6 +103,13 @@ export default {
         'bounce': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
       },
       keyframes: {
+        "heartbeat": {
+          "0%": { transform: "scale(1)" },
+          "20%": { transform: "scale(1.08)" },
+          "40%": { transform: "scale(1)" },
+          "60%": { transform: "scale(1.08)" },
+          "100%": { transform: "scale(1)" }
+        },
         "accordion-down": {
           from: {
             height: "0",
@@ -153,6 +160,7 @@ export default {
         }
       },
       animation: {
+        "heartbeat": "heartbeat 1.2s ease-in-out infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.3s ease-out",

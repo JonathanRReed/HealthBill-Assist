@@ -22,7 +22,7 @@ const KEY = "fairflow_plan_v1";
 function emitUpdated() {
   try {
     window.dispatchEvent(new CustomEvent("plan:updated"));
-  } catch (err) {
+  } catch {
     // noop in SSR/non-browser environments
   }
 }
