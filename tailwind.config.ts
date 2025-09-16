@@ -78,11 +78,20 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+
+        // Healthcare palette additions (namespaced to avoid conflicts)
+        teal: { DEFAULT: "#0FB5AE", dark: "#0C8C87" },
+        coral: "#FF6B6B",
+        gold: "#FFB545",
+        hbInk: { title: "#0C1325", body: "#1E2332", muted: "#5B6477" },
+        hbSurface: { bg: "#F7FAFC", card: "#FFFFFF", tint: "#F0F5F6" },
       },
       borderRadius: {
         lg: "var(--radius-lg)",
         md: "var(--radius)",
         sm: "var(--radius-sm)",
+        xl: "1.25rem",
+        "2xl": "1.75rem",
       },
       fontFamily: {
         'rubik': ['Poppins', 'Rubik', 'sans-serif'],
@@ -92,6 +101,7 @@ export default {
         'glow': 'var(--shadow-glow)',
         'sm': 'var(--shadow-sm)',
         'md': 'var(--shadow-md)',
+        'soft': '0 12px 30px rgba(12,19,37,0.06)',
       },
       backgroundImage: {
         'gradient-brand': 'var(--gradient-brand)',

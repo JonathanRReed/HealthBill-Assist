@@ -16,7 +16,7 @@ const Legal = () => {
               Disclosures & <span className="text-brand-gold">Terms</span>
             </h1>
             <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-              Transparent, plain-language explanations of how FairFlow works and protects you
+              Transparent, plain-language explanations of how HealthBill Assist works and protects you
             </p>
           </div>
 
@@ -61,7 +61,7 @@ const Legal = () => {
                 <AccordionContent className="text-text-secondary">
                   <div className="space-y-3">
                     <p>
-                      FairFlow charges a flat fee based on the amount borrowed, typically around 1% with a $5 maximum. 
+                      HealthBill Assist charges a flat fee based on the amount borrowed, typically around 1% with a $5 maximum. 
                       This fee does not compound or increase over time.
                     </p>
                     <div className="bg-elevated p-3 rounded-md">
@@ -119,7 +119,7 @@ const Legal = () => {
                 <AccordionContent className="text-text-secondary">
                   <div className="space-y-3">
                     <p>
-                      FairFlow uses cash-flow-based eligibility criteria focused on your recent deposit 
+                      HealthBill Assist uses cash-flow-based eligibility criteria focused on your recent deposit 
                       history and account stability. We do not discriminate based on protected characteristics.
                     </p>
                     <div className="bg-elevated p-3 rounded-md">
@@ -175,7 +175,7 @@ const Legal = () => {
                 <AccordionContent className="text-text-secondary">
                   <div className="space-y-3">
                     <p>
-                      FairFlow is designed to provide emergency relief, not long-term credit. 
+                      HealthBill Assist is designed to provide emergency relief, not long-term credit. 
                       We include features to promote healthy financial habits.
                     </p>
                     <ul className="space-y-2">
@@ -203,7 +203,7 @@ const Legal = () => {
           <div className="mt-8 p-6 bg-warning/10 border border-warning/20 rounded-md">
             <h3 className="font-medium text-text-primary mb-2">Important Demo Notice</h3>
             <p className="text-sm text-text-secondary">
-              This is a conceptual demonstration of FairFlow. No real financial services are provided. 
+              This is a conceptual demonstration of HealthBill Assist. No real financial services are provided. 
               In production, all financial services would be subject to applicable federal and state 
               regulations, licensing requirements, and consumer protection laws.
             </p>

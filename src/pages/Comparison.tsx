@@ -39,7 +39,7 @@ const Comparison = () => {
               Cost <span className="text-brand-gold">Comparison</span>
             </h1>
             <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-              See how FairFlow's transparent, capped fees compare to traditional payday lending
+              See how HealthBill Assist’s transparent, capped fees compare to traditional payday lending
             </p>
           </div>
 
@@ -87,10 +87,10 @@ const Comparison = () => {
               
               <div className="mb-4">
                 <h2 className="text-xl font-rubik font-bold text-text-primary mb-2">
-                  Fair<span className="text-brand-gold">Flow</span>
+                  HealthBill <span className="text-brand-gold">Assist</span>
                 </h2>
                 <p className="text-sm text-text-secondary">
-                  Transparent, capped fees with consumer protection
+                  Transparent, capped fee with consumer protections
                 </p>
               </div>
 

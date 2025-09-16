@@ -23,8 +23,8 @@ export function FairFlowLogo({ className, size = "md", showWordmark = true }: Fa
       <div className={cn("rounded-xl bg-gradient-brand shadow-md", wrapperSize[size])}>
         <div className="h-full w-full rounded-lg bg-elevated ring-1 ring-white/20 flex items-center justify-center">
           <img
-            src={`${import.meta.env.BASE_URL}favicon.png`}
-            alt="FairFlow logo"
+            src={`${import.meta.env.BASE_URL}favicon.svg`}
+            alt="HealthBill Assist logo"
             className={cn("rounded-md object-contain", imgSize[size])}
             decoding="async"
             fetchPriority="high"
@@ -33,7 +33,7 @@ export function FairFlowLogo({ className, size = "md", showWordmark = true }: Fa
       </div>
       {showWordmark && (
         <span className="font-rubik font-bold text-xl text-text-primary whitespace-nowrap">
-          Fair<span className="text-brand-gold">Flow</span>
+          HealthBill <span className="text-brand-gold">Assist</span>
         </span>
       )}
     </div>

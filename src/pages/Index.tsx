@@ -51,32 +51,113 @@ const Index = () => {
         hardshipUsage={Math.round(Math.random() * 30)}
       />
 
-      <main id="main-content" className="container mx-auto px-4 py-8">{/* Hero Section (Medical-focused) */}
+      <main id="main-content" className="container mx-auto px-4 py-8">{/* Hero Section */}
         <div className="hero-bg text-center p-8 sm:p-10 mb-12">
           <h1 className="text-4xl sm:text-5xl font-slab font-bold text-text-primary mb-4">
-            When medical bills hit out of nowhere,
-            {" "}
-            <span className="text-gradient">relief should be fast, fair, and stress-free.</span>
+            When medical bills strike, <span className="text-gradient">relief should be instant, fair, and stress-free.</span>
           </h1>
 
           <p className="text-xl text-text-secondary max-w-2xl mx-auto mb-6">
-            HealthBill Assist helps patients manage unexpected healthcare costs without falling into debt traps.
+            HealthBill Assist helps patients handle surprise healthcare costs with a tiny flat fee, flexible payback, and no debt traps—right inside the Wells Fargo app.
           </p>
 
-          <p className="text-sm text-text-muted max-w-xl mx-auto">
-            I’ve seen how medical debt creates stress—this project reimagines how a bank could change that.
-          </p>
+          <div className="flex items-center justify-center gap-3">
+            <Link to="/bill-bridge">
+              <span className="inline-block rounded-full bg-teal px-6 py-3 text-white font-semibold hover:bg-teal/90 btn-soft-hover">
+                Get Relief Now
+              </span>
+            </Link>
+            <a href="#how-it-works" className="inline-block rounded-full px-6 py-3 text-text-primary border border-border hover:bg-surface">
+              How It Works
+            </a>
+          </div>
+        </div>
+
+        {/* From Panic to Plan (Storyboard) */}
+        <div className="mt-20 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            <div className="space-y-4">
+              <h2 className="text-2xl font-rubik font-bold text-text-primary">From Panic to Plan</h2>
+              <p className="text-text-secondary">
+                Sarah gets a $500 ER bill. She opens the Wells Fargo app → taps HealthBill Assist → splits the bill into 4 paychecks ($125 each) with a $5 flat fee → hospital is paid today → Sarah leaves with her meds and a plan she can handle.
+              </p>
+              <Link to="/bill-bridge" className="inline-flex items-center gap-2 rounded-full px-5 py-3 border border-border hover:bg-surface btn-soft-hover">
+                See a 30-second demo
+              </Link>
+            </div>
+            <div className="bg-surface rounded-2xl shadow-soft p-6 border border-border">
+              {/* Illustration placeholder */}
+              <div className="aspect-video w-full rounded-xl bg-surface/60 border border-border flex items-center justify-center text-text-muted">
+                App storyboard placeholder
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Why Wells Fargo (Trust) */}
+        <div className="mt-20 max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-rubik font-bold text-text-primary mb-3">Why Wells Fargo</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="glass-panel p-6 hover-lift">
+              <h3 className="font-medium text-text-primary mb-2">Fair by design</h3>
+              <p className="text-sm text-text-secondary">No late fees, no compounding interest.</p>
+            </div>
+            <div className="glass-panel p-6 hover-lift">
+              <h3 className="font-medium text-text-primary mb-2">Customer-first</h3>
+              <p className="text-sm text-text-secondary">More time if life happens, without penalty.</p>
+            </div>
+            <div className="glass-panel p-6 hover-lift">
+              <h3 className="font-medium text-text-primary mb-2">Scalable</h3>
+              <p className="text-sm text-text-secondary">Start with medical; expand to utilities, rent, car repairs.</p>
+            </div>
+          </div>
+          <div className="text-center mt-6">
+            <a href="#how-it-works" className="inline-flex items-center gap-2 rounded-full px-5 py-3 border border-border hover:bg-surface btn-soft-hover">
+              Explore how it works
+            </a>
+          </div>
+        </div>
+
+        {/* Personal Note (Founder/Story) */}
+        <div className="mt-20 max-w-4xl mx-auto">
+          <div className="bg-surface border border-border rounded-2xl p-6 md:p-8 shadow-soft">
+            <h2 className="text-2xl font-rubik font-bold text-text-primary mb-3">Why this matters to me</h2>
+            <p className="text-text-secondary leading-relaxed">
+              I grew up with Perthes’s Disease, a rare hip condition. My family did everything to get me care—and carried the bills that came with it. No one should face a health crisis and a financial crisis at the same time. HealthBill Assist is how we turn that moment into peace of mind.
+            </p>
+          </div>
+        </div>
+
+        {/* FAQ */}
+        <div className="mt-20 max-w-4xl mx-auto">
+          <h2 className="text-2xl font-rubik font-bold text-text-primary mb-6 text-center">FAQ</h2>
+          <div className="space-y-4">
+            <div className="bg-surface border border-border rounded-xl p-5">
+              <h3 className="font-medium text-text-primary mb-1">Is this a loan?</h3>
+              <p className="text-sm text-text-secondary">It’s a small, short-term advance with one flat fee and no interest.</p>
+            </div>
+            <div className="bg-surface border border-border rounded-xl p-5">
+              <h3 className="font-medium text-text-primary mb-1">What if I can’t make a payment?</h3>
+              <p className="text-sm text-text-secondary">Tap Hardship to extend one cycle with no extra cost.</p>
+            </div>
+            <div className="bg-surface border border-border rounded-xl p-5">
+              <h3 className="font-medium text-text-primary mb-1">Where does the money go?</h3>
+              <p className="text-sm text-text-secondary">Straight to your healthcare provider.</p>
+            </div>
+            <div className="bg-surface border border-border rounded-xl p-5">
+              <h3 className="font-medium text-text-primary mb-1">Will this hurt my credit?</h3>
+              <p className="text-sm text-text-secondary">On-time payments can help your profile; we avoid punitive fees.</p>
+            </div>
+          </div>
         </div>
 
         {/* Problem Section */}
         <div className="max-w-6xl mx-auto mb-12">
           <div className="text-center mb-10">
-            <h2 className="text-2xl font-rubik font-bold text-text-primary mb-4">
-              Medical costs arrive fast. Cash rarely does.
-            </h2>
-            <p className="text-text-secondary">
-              Ambulance bills, ER copays, and urgent prescriptions can’t wait. Your money should.
-            </p>
+            <h2 className="text-2xl font-rubik font-bold text-text-primary mb-4">Why medical bills hit harder</h2>
+            <p className="text-text-secondary">A sudden ER visit, an ambulance ride, a prescription you need today—medical bills don’t wait. For too many people, that moment means panic and high-interest options that make things worse.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -106,18 +187,14 @@ const Index = () => {
           </div>
 
           <div className="mt-6 text-center text-sm text-text-muted">
-            Medical expenses are the #1 cause of debt collections in the U.S., affecting nearly 1 in 5 adults.
+            • 1 in 5 U.S. adults has medical debt in collections • Most can’t cover a $400 emergency without borrowing • Predatory loans turn short-term help into long-term debt
           </div>
         </div>
 
         {/* Solution Section Intro */}
-        <div className="max-w-5xl mx-auto mb-6 text-center">
-          <h2 className="text-2xl font-rubik font-bold text-text-primary mb-2">
-            HealthBill Assist: simple, fair medical bill help
-          </h2>
-          <p className="text-text-secondary">
-            Split or delay medical bills into manageable payments. Flat, transparent fee—no hidden interest. Pay hospitals or pharmacies directly.
-          </p>
+        <div id="how-it-works" className="max-w-5xl mx-auto mb-6 text-center">
+          <h2 className="text-2xl font-rubik font-bold text-text-primary mb-2">Relief in minutes, not months</h2>
+          <p className="text-text-secondary">Funds pay your provider directly—so your care isn’t delayed.</p>
         </div>
 
         {/* Main Demo Flow */}
@@ -185,7 +262,7 @@ const Index = () => {
         <div className="mt-16 max-w-6xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-rubik font-bold text-text-primary mb-3">Beyond the Bill</h2>
-            <p className="text-text-secondary">Once the bill is covered, HealthBill Assist helps rebuild confidence with savings nudges and credit growth.</p>
+            <p className="text-text-secondary">Relief → Repay → Rebuild. On-time payments and gentle savings nudges help rebuild confidence.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -269,7 +346,7 @@ const Index = () => {
             <Link to="/legal" className="text-text-secondary hover:text-brand-gold">Disclosures</Link>
           </div>
           <p className="text-xs text-text-muted">
-            This is a mock demonstration. FairFlow is a conceptual financial product for demo purposes.
+            This is a mock demonstration. HealthBill Assist is a conceptual product for demo purposes.
           </p>
         </div>
       </footer>
