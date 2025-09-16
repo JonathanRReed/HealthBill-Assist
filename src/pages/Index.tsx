@@ -62,7 +62,7 @@ const Index = () => {
           </p>
 
           <div className="flex items-center justify-center gap-3">
-            <Link to="/bill-bridge">
+            <Link to="/health-bridge">
               <span className="inline-block rounded-full bg-teal px-6 py-3 text-white font-semibold hover:bg-teal/90 btn-soft-hover">
                 Get Relief Now
               </span>
@@ -81,7 +81,7 @@ const Index = () => {
               <p className="text-text-secondary">
                 Sarah gets a $500 ER bill. She opens the Wells Fargo app → taps HealthBill Assist → splits the bill into 4 paychecks ($125 each) with a $5 flat fee → hospital is paid today → Sarah leaves with her meds and a plan she can handle.
               </p>
-              <Link to="/bill-bridge" className="inline-flex items-center gap-2 rounded-full px-5 py-3 border border-border hover:bg-surface btn-soft-hover">
+              <Link to="/health-bridge" className="inline-flex items-center gap-2 rounded-full px-5 py-3 border border-border hover:bg-surface btn-soft-hover">
                 See a 30-second demo
               </Link>
             </div>
@@ -341,7 +341,7 @@ const Index = () => {
       <footer className="border-t border-border mt-20 py-8">
         <div className="container mx-auto px-4 text-center">
           <div className="flex flex-wrap justify-center gap-6 mb-4 text-sm">
-            <Link to="/bill-bridge" className="text-text-secondary hover:text-brand-gold">BillBridge</Link>
+            <Link to="/health-bridge" className="text-text-secondary hover:text-brand-gold">HealthBridge</Link>
             <Link to="/comparison" className="text-text-secondary hover:text-brand-gold">Compare Costs</Link>
             <Link to="/legal" className="text-text-secondary hover:text-brand-gold">Disclosures</Link>
           </div>

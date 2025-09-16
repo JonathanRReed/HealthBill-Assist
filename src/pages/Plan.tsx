@@ -49,7 +49,7 @@ export default function Plan() {
               <h3 className="text-lg font-medium text-text-primary mb-2">No items yet</h3>
               <p className="text-text-secondary">Add an offer or a bill to build your plan.</p>
               <div className="mt-4">
-                <Button onClick={() => navigate("/bill-bridge")}>Go to BillBridge</Button>
+                <Button onClick={() => navigate("/health-bridge")}>Go to HealthBridge</Button>
               </div>
             </Card>
           ) : (
@@ -89,7 +89,7 @@ export default function Plan() {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <ArrowLeftRight className="w-4 h-4 text-brand-gold" />
-                          <span className="font-medium text-text-primary">BillBridge: {item.name}</span>
+                          <span className="font-medium text-text-primary">HealthBridge: {item.name}</span>
                         </div>
                         <Button variant="ghost" size="icon" onClick={() => { removeItem(item.id); toast("Removed"); }}>
                           <Trash2 className="w-4 h-4" />

@@ -14,7 +14,7 @@ const About = lazy(() => import("./pages/About"));
 const Features = lazy(() => import("./pages/Features"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const Contact = lazy(() => import("./pages/Contact"));
-const BillBridge = lazy(() => import("./pages/BillBridge"));
+const HealthBridge = lazy(() => import("./pages/HealthBridge"));
 const Comparison = lazy(() => import("./pages/Comparison"));
 const Legal = lazy(() => import("./pages/Legal"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -63,7 +63,7 @@ const App = () => (
                 <Route path="/features" element={<Features />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/bill-bridge" element={<BillBridge />} />
+                <Route path="/health-bridge" element={<HealthBridge />} />
                 <Route path="/comparison" element={<Comparison />} />
                 <Route path="/plan" element={<Plan />} />
                 <Route path="/legal" element={<Legal />} />

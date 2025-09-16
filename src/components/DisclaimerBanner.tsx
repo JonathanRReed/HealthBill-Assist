@@ -100,7 +100,7 @@ export function DisclaimerModal() {
   const [isOpen, setIsOpen] = useState(() => {
     // Check if user has seen disclaimer before
     try {
-      return !localStorage.getItem("fairflow_disclaimer_seen");
+      return !localStorage.getItem("healthbill_disclaimer_seen");
     } catch {
       return true; // Show by default if localStorage unavailable
     }
@@ -108,7 +108,7 @@ export function DisclaimerModal() {
 
   const handleAccept = () => {
     try {
-      localStorage.setItem("fairflow_disclaimer_seen", "true");
+      localStorage.setItem("healthbill_disclaimer_seen", "true");
     } catch {
       // Ignore localStorage errors
     }

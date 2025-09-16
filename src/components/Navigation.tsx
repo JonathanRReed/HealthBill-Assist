@@ -19,7 +19,7 @@ const navItems = [
   { label: "About", href: "/about" },
   { label: "Features", href: "/features" },
   { label: "FAQ", href: "/faq" },
-  { label: "BillBridge", href: "/bill-bridge" },
+  { label: "HealthBridge", href: "/health-bridge" },
   { label: "Compare Costs", href: "/comparison" },
   { label: "Contact", href: "/contact" },
   { label: "My Plan", href: "/plan" },

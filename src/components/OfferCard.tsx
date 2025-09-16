@@ -147,9 +147,9 @@ export function OfferCard({ profile, onOfferReady }: OfferCardProps) {
           <Button
             variant="secondary"
             className="w-full"
-            onClick={() => navigate("/bill-bridge")}
+            onClick={() => navigate("/health-bridge")}
           >
-            Try BillBridge instead
+            Try HealthBridge instead
           </Button>
         </div>
       </Card>
