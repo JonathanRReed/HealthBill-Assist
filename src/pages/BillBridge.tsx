@@ -226,7 +226,7 @@ const BillBridge = () => {
                     </div>
 
                     <Button
-                      className="w-full"
+                      className="w-full btn-soft-hover btn-glow"
                       size="lg"
                       onClick={() => {
                         if (!selectedBill) return;
