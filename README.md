@@ -123,7 +123,8 @@ Built for **Wells Fargo x GCA Early Talent Challenge**
 
 ## 📜 License
 
-MIT (for the demo code/design). **Not for production financial use.**
+MIT for the demo code and original design work. Brand names and trademarks are
+excluded. See [`LICENSE`](./LICENSE) and [`NOTICE.md`](./NOTICE.md).
 
 ---
 
